@@ -1,0 +1,36 @@
+<launch>
+  <!-- <arg name="start_frame" default="0"/>
+  <arg name="bag" default=""/>
+  <arg name="results" default="$(env HOME)/Desktop/results.txt"/> -->
+
+  <!-- <arg name="bag" default="$(env HOME)/Workspace/data/TUM/r1.bag"/>
+  <arg name="results" default="$(env HOME)/Workspace/spline_vio_tests/results/SplineVIO/r1.txt"/> -->
+
+  <!-- <rosparam command="load" file="$(find dmvio_ros)/configs/d435i/d435i.yaml" ns="dmvio_ros"/> -->
+    <param name="useimu" type="bool"  value = "True" />
+    <param name="quiet" type="bool"  value = "False" />
+    <param name="init_disableVIOUntilFirstInit" type="bool"  value = "False" />
+    <param name="nogui" type="bool"  value = "False" />
+    <param name="RGBDInitializerDebug" type="bool"  value = "True" />
+
+
+    <param name="imu_topic" type="string"  value="/camera/imu" />
+    <param name="cam_topic" type="string"  value="/camera/color/image_raw" />
+    <param name="depth_topic" type="string"  value="/camera/aligned_depth_to_color/image_raw" />
+    <!-- <param name="calib" type="string"  value="$(find dmvio_ros)/configs/d435i/camera.txt" /> -->
+    <param name="settingsFile" type="string"  value="$(find d2vio)/configs/d455/d455.yaml" />
+    <!-- <param name="imuCalib" type="string"  value="$(find dmvio_ros)/configs/d435i/camchain.yaml" /> -->
+
+    <!-- <param name="mode" value="0" /> -->
+    <!-- <param name="vignette" type="string"  value="$(find dmvio_ros)/configs/d455/vignette_t265.png" /> -->
+    <!-- <param name="gamma" type="string"  value="$(find dmvio_ros)/configs/d455/pcalib.txt" /> -->
+
+  <node name="d2vio" pkg="d2vio" type="d2vio_ros_node" output="screen" required="true">
+    
+    <!-- <param name="bag" value="$(arg bag)" /> -->
+    <!-- <param name="start_frame" value="$(arg start_frame)" /> -->
+    <!-- <param name="results" value="$(arg results)" /> -->
+    <!-- <param name="nogui" value="true" /> -->
+    <!-- <param name="weight_imu_dso" value="0.1" /> -->
+  </node>
+  </launch>

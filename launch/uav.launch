@@ -1,0 +1,29 @@
+<launch>
+  <!-- <arg name="start_frame" default="0"/>
+  <arg name="bag" default=""/>
+  <arg name="results" default="$(env HOME)/Desktop/results.txt"/> -->
+
+  <!-- <arg name="bag" default="$(env HOME)/Workspace/data/TUM/r1.bag"/>
+  <arg name="results" default="$(env HOME)/Workspace/spline_vio_tests/results/SplineVIO/r1.txt"/> -->
+
+  <!-- <rosparam command="load" file="$(find dmvio_ros)/configs/d435i/d435i.yaml" ns="dmvio_ros"/> -->
+    <param name="imu_topic" type="string"  value="/airsim_node/drone_1/imu/imu" />
+    <param name="cam_topic" type="string"  value="/airsim_node/drone_1/front_center/Scene" />
+    <!-- <param name="depth_topic" type="string"  value="camera/depth/image_rect_raw" /> -->
+    <!-- <param name="calib" type="string"  value="$(find dmvio_ros)/configs/d435i/camera.txt" /> -->
+    <param name="settingsFile" type="string"  value="$(find dmvio_ros)/configs/uav/uav.yaml" />
+    <!-- <param name="imuCalib" type="string"  value="$(find dmvio_ros)/configs/d435i/camchain.yaml" /> -->
+
+    <!-- <param name="mode" value="0" /> -->
+    <!-- <param name="vignette" type="string"  value="$(find dmvio_ros)/configs/d455/vignette_t265.png" /> -->
+    <!-- <param name="gamma" type="string"  value="$(find dmvio_ros)/configs/d455/pcalib.txt" /> -->
+
+  <node name="dmvio_ros" pkg="dmvio_ros" type="dmvio_ros_node" output="screen" required="true">
+    
+    <!-- <param name="bag" value="$(arg bag)" /> -->
+    <!-- <param name="start_frame" value="$(arg start_frame)" /> -->
+    <!-- <param name="results" value="$(arg results)" /> -->
+    <!-- <param name="nogui" value="true" /> -->
+    <!-- <param name="weight_imu_dso" value="0.1" /> -->
+  </node>
+  </launch>
